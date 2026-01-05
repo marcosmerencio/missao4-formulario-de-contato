@@ -75,6 +75,9 @@ Manipulação do DOM
 
 Controle de estados visuais (erro e sucesso)
 
+# 📂 Estrutura do Projeto
+<img width="510" height="190" alt="estrutura-do-projeto-formulariol" src="https://github.com/user-attachments/assets/5afe26aa-8756-43b3-a995-fbdb82772c10" />
+
 # ⚙️ Como Funciona a Validação
 
 O JavaScript intercepta o envio do formulário usando o evento submit
