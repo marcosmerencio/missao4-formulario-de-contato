@@ -1,62 +1,68 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contactForm');
     const toast = document.getElementById('toast');
-    
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        let isValid = true;
+    // Função de validação solicitada
+    function validarEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    }
 
-        // --- VALIDAÇÃO DO NOME ---
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Intercepta o evento submit
+        let isFormValid = true;
+
+        // 1. Validação do Nome (Vazio vs Nome Completo)
         const nameValue = nameInput.value.trim();
         const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ']+(\s+[A-Za-zÀ-ÖØ-öø-ÿ']+)+$/;
 
         if (nameValue === "") {
-            showError(nameInput, "Nome obrigatório.");
-            isValid = false;
+            exibirErro(nameInput, "Nome obrigatório.");
+            isFormValid = false;
         } else if (!nameRegex.test(nameValue)) {
-            showError(nameInput, "Por favor, informe seu nome completo.");
-            isValid = false;
+            exibirErro(nameInput, "Por favor, informe seu nome completo.");
+            isFormValid = false;
         } else {
-            removeError(nameInput);
+            removerErro(nameInput);
         }
 
-        // --- VALIDAÇÃO DO EMAIL ---
+        // 2. Validação do E-mail (Vazio vs Formato Inválido)
         const emailValue = emailInput.value.trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (emailValue === "") {
-            showError(emailInput, "E-mail obrigatório.");
-            isValid = false;
-        } else if (!emailRegex.test(emailValue)) {
-            showError(emailInput, "Informe um endereço de e-mail válido.");
-            isValid = false;
+            exibirErro(emailInput, "E-mail obrigatório.");
+            isFormValid = false;
+        } else if (!validarEmail(emailValue)) {
+            exibirErro(emailInput, "Por favor, insira um e-mail válido.");
+            isFormValid = false;
         } else {
-            removeError(emailInput);
+            removerErro(emailInput);
         }
 
-        if (isValid) {
+        // 3. Sucesso
+        if (isFormValid) {
             toast.classList.add('show');
             form.reset();
             setTimeout(() => toast.classList.remove('show'), 4000);
         }
     });
 
-    function showError(input, message) {
+    // Funções auxiliares para manipulação visual
+    function exibirErro(input, mensagem) {
         const group = input.parentElement;
-        const messageSpan = group.querySelector('.error-message');
-        messageSpan.textContent = message;
+        const msgSpan = group.querySelector('.error-message');
+        msgSpan.textContent = mensagem;
         group.classList.add('error');
     }
 
-    function removeError(input) {
+    function removerErro(input) {
         input.parentElement.classList.remove('error');
     }
 
-    // Limpa erro ao digitar
+    // Limpa o erro enquanto o usuário digita
     [nameInput, emailInput].forEach(input => {
-        input.addEventListener('input', () => removeError(input));
+        input.addEventListener('input', () => removerErro(input));
     });
 });
