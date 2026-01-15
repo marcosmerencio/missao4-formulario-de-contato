@@ -1,4 +1,5 @@
 # 📬 Formulário de Contato com Validação em JavaScript
+<img width="1140" height="700" alt="form-com-validação" src="https://github.com/user-attachments/assets/4fb6a3b6-922a-424f-9328-bf8799dfd522" />
 
 Este projeto é um formulário de contato com validação no lado do cliente, desenvolvido como parte da Missão do Dia: Validação Simples de Formulário.
 O foco principal é evitar o envio do formulário quando os campos obrigatórios não estiverem preenchidos, garantindo melhor usabilidade e qualidade dos dados enviados.
