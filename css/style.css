@@ -139,3 +139,21 @@ button {
     from { opacity: 0; transform: translateY(-5px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .contact-card {
+        padding: 1.5rem;
+    }
+
+    header h2 {
+        font-size: 1.5rem;
+    }
+
+    .toast {
+        width: calc(100% - 40px);
+        text-align: center;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
