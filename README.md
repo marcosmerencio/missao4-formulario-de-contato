@@ -107,7 +107,7 @@ Uma notificação visual de sucesso é exibida
 
 Clone o repositório:
 
-git clone https://github.com/marcosmerencio/missao4-formulario-de-contato/.git
+git clone https://github.com/marcosmerencio/missao4-formulario-de-contato.git
 
 
 Acesse a pasta do projeto
